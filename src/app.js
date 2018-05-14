@@ -1,4 +1,10 @@
 "use strict"
+
+// REACT
+import React from 'react';
+import {render} from 'react-dom';
+import {Provider} from 'react-redux';
+
 import {applyMiddleware, createStore} from 'redux';
 
 import logger from 'redux-logger';
@@ -15,10 +21,20 @@ import {postBooks, deleteBooks, updateBooks} from './actions/booksActions';
 const middleware = applyMiddleware(logger);
 const store = createStore(reducers, middleware);
 
-store.subscribe(function () {
-    console.log('current state is: ', store.getState());
-    // console.log('current price: - ', store.getState()[0].price);
-})
+import BooksList from './components/pages/booksList'
+
+render(
+    <Provider store={store} >
+    <BooksList/>
+    </Provider>
+    
+    , document.getElementById('app')
+)
+
+// store.subscribe(function () {
+//     console.log('current state is: ', store.getState());
+//     // console.log('current price: - ', store.getState()[0].price);
+// })
 
 store.dispatch(postBooks([
     {
@@ -34,11 +50,9 @@ store.dispatch(postBooks([
     }
 ]))
 
-store.dispatch(postBooks({id: 3, title: "the third book", description: 'the third book\'s description', price: 100}));
-
-store.dispatch(deleteBooks({id: 1}));
-
-store.dispatch(updateBooks({id: 2, title: 'Learn REDUX in 24H!..'}));
+// store.dispatch(postBooks({id: 3, title: "the third book", description: 'the third book\'s description', price: 100}));
+// store.dispatch(deleteBooks({id: 1}));
+// store.dispatch(updateBooks({id: 2, title: 'Learn REDUX in 24H!..'}));
 
 // ---->> CART ACTIONS <----- ADD to cart Replact the pureaction by the
 // cardAction
