@@ -53,6 +53,16 @@ store.dispatch({
     type: 'UPDATE_BOOK',
     payload: {
         id: 2,
-        title: 'Learn React in 24h...'
+        title: 'Learn React in 24h!...'
     }
+});
+
+// ---->> CART ACTIONS <----- ADD to cart
+store.dispatch({
+    type: 'ADD_TO_CART',
+    payload: [
+        {
+            id: 2
+        }
+    ]
 });

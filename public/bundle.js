@@ -137,7 +137,7 @@ eval("module.exports = function(originalModule) {\r\n\tif (!originalModule.webpa
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nvar _redux = __webpack_require__(/*! redux */ \"./node_modules/redux/es/redux.js\");\n\nvar _index = __webpack_require__(/*! ./reducers/index */ \"./src/reducers/index.js\");\n\nvar _index2 = _interopRequireDefault(_index);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\n// STEP 1: create the store\nvar store = (0, _redux.createStore)(_index2.default);\n\n// IMPORT COMBINED REDUCERS\n\n\nstore.subscribe(function () {\n    console.log('current state is: ', store.getState());\n    // console.log('current price: - ', store.getState()[0].price);\n});\n\nstore.dispatch({\n    type: \"POST_BOOK\",\n    payload: [{\n        id: 1,\n        title: \"this is a book\",\n        description: \"this is the book description\",\n        price: 33\n    }, {\n        id: 2,\n        title: \"this is a book\",\n        description: \"this is the book description\",\n        price: 50\n    }]\n});\n\nstore.dispatch({\n    type: 'POST_BOOK',\n    payload: [{\n        id: 3,\n        title: \"the third book\",\n        description: 'the third book\\'s description',\n        price: 100\n\n    }]\n});\n\nstore.dispatch({\n    type: 'DELETE_BOOK',\n    payload: {\n        id: 1\n    }\n});\n\nstore.dispatch({\n    type: 'UPDATE_BOOK',\n    payload: {\n        id: 2,\n        title: 'Learn React in 24h...'\n    }\n});\n\n//# sourceURL=webpack:///./src/app.js?");
+eval("\n\nvar _redux = __webpack_require__(/*! redux */ \"./node_modules/redux/es/redux.js\");\n\nvar _index = __webpack_require__(/*! ./reducers/index */ \"./src/reducers/index.js\");\n\nvar _index2 = _interopRequireDefault(_index);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\n// STEP 1: create the store\nvar store = (0, _redux.createStore)(_index2.default);\n\n// IMPORT COMBINED REDUCERS\n\n\nstore.subscribe(function () {\n    console.log('current state is: ', store.getState());\n    // console.log('current price: - ', store.getState()[0].price);\n});\n\nstore.dispatch({\n    type: \"POST_BOOK\",\n    payload: [{\n        id: 1,\n        title: \"this is a book\",\n        description: \"this is the book description\",\n        price: 33\n    }, {\n        id: 2,\n        title: \"this is a book\",\n        description: \"this is the book description\",\n        price: 50\n    }]\n});\n\nstore.dispatch({\n    type: 'POST_BOOK',\n    payload: [{\n        id: 3,\n        title: \"the third book\",\n        description: 'the third book\\'s description',\n        price: 100\n\n    }]\n});\n\nstore.dispatch({\n    type: 'DELETE_BOOK',\n    payload: {\n        id: 1\n    }\n});\n\nstore.dispatch({\n    type: 'UPDATE_BOOK',\n    payload: {\n        id: 2,\n        title: 'Learn React in 24h!...'\n    }\n});\n\n// ---->> CART ACTIONS <----- ADD to cart\nstore.dispatch({\n    type: 'ADD_TO_CART',\n    payload: [{\n        id: 2\n    }]\n});\n\n//# sourceURL=webpack:///./src/app.js?");
 
 /***/ }),
 
@@ -153,6 +153,18 @@ eval("\n\n// STEP 3: BOOKS REDUCER\n\nObject.defineProperty(exports, \"__esModul
 
 /***/ }),
 
+/***/ "./src/reducers/cardReducers.js":
+/*!**************************************!*\
+  !*** ./src/reducers/cardReducers.js ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\n// CART REDUCERS\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});\nexports.cardReducer = cardReducer;\n\nfunction _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }\n\nfunction cardReducer() {\n    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {\n        cart: []\n    };\n    var action = arguments[1];\n\n    switch (action.type) {\n        case 'ADD_TO_CART':\n            return {\n                cart: [].concat(_toConsumableArray(state.cart), _toConsumableArray(action.payload))\n            };\n            break;\n    }\n    return state;\n}\n\n//# sourceURL=webpack:///./src/reducers/cardReducers.js?");
+
+/***/ }),
+
 /***/ "./src/reducers/index.js":
 /*!*******************************!*\
   !*** ./src/reducers/index.js ***!
@@ -161,7 +173,7 @@ eval("\n\n// STEP 3: BOOKS REDUCER\n\nObject.defineProperty(exports, \"__esModul
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});\n\nvar _redux = __webpack_require__(/*! redux */ \"./node_modules/redux/es/redux.js\");\n\nvar _booksReducers = __webpack_require__(/*! ./booksReducers */ \"./src/reducers/booksReducers.js\");\n\n// HERE COMBINE THE REDUCERS\nexports.default = (0, _redux.combineReducers)({\n    books: _booksReducers.bookReducers\n});\n\n// HERE IMPORT REDUCERS TO BE COMBINED\n\n//# sourceURL=webpack:///./src/reducers/index.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});\n\nvar _redux = __webpack_require__(/*! redux */ \"./node_modules/redux/es/redux.js\");\n\nvar _booksReducers = __webpack_require__(/*! ./booksReducers */ \"./src/reducers/booksReducers.js\");\n\nvar _cardReducers = __webpack_require__(/*! ./cardReducers */ \"./src/reducers/cardReducers.js\");\n\n// HERE COMBINE THE REDUCERS\n\n\n// HERE IMPORT REDUCERS TO BE COMBINED\nexports.default = (0, _redux.combineReducers)({\n    books: _booksReducers.bookReducers,\n    cart: _cardReducers.cardReducers\n});\n\n//# sourceURL=webpack:///./src/reducers/index.js?");
 
 /***/ })
 
