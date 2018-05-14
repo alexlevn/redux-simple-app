@@ -1,68 +1,48 @@
 "use strict"
-import {createStore} from 'redux';
+import {applyMiddleware, createStore} from 'redux';
+
+import logger from 'redux-logger';
 
 // IMPORT COMBINED REDUCERS
-import reducers from './reducers/index'
+import reducers from './reducers/index';
+
+// IMPORT ACTIONS
+import {addToCard} from './actions/cartActions';
+import {postBooks, deleteBooks, updateBooks} from './actions/booksActions';
 
 // STEP 1: create the store
-const store = createStore(reducers);
+// const middleware = applyMiddleware(logger()); // old version
+const middleware = applyMiddleware(logger);
+const store = createStore(reducers, middleware);
 
 store.subscribe(function () {
     console.log('current state is: ', store.getState());
     // console.log('current price: - ', store.getState()[0].price);
 })
 
-store.dispatch({
-    type: "POST_BOOK",
-    payload: [
-        {
-            id: 1,
-            title: "this is a book",
-            description: "this is the book description",
-            price: 33
-        }, {
-            id: 2,
-            title: "this is a book",
-            description: "this is the book description",
-            price: 50
-        }
-    ]
-});
+store.dispatch(postBooks([
+    {
+        id: 1,
+        title: "this is the first book",
+        description: "this is the first book's description",
+        price: 33
+    }, {
+        id: 2,
+        title: "this is a seconde book",
+        description: "this is the second book's description",
+        price: 50
+    }
+]))
 
-store.dispatch({
-    type: 'POST_BOOK',
-    payload: [
-        {
-            id: 3,
-            title: "the third book",
-            description: 'the third book\'s description',
-            price: 100
+store.dispatch(postBooks({id: 3, title: "the third book", description: 'the third book\'s description', price: 100}));
 
-        }
-    ]
-});
+store.dispatch(deleteBooks({id: 1}));
 
-store.dispatch({
-    type: 'DELETE_BOOK',
-    payload: {
+store.dispatch(updateBooks({id: 2, title: 'Learn REDUX in 24H!..'}));
+
+// ---->> CART ACTIONS <----- ADD to cart Replact the pureaction by the
+// cardAction
+store.dispatch(addToCard([{
         id: 1
     }
-});
-
-store.dispatch({
-    type: 'UPDATE_BOOK',
-    payload: {
-        id: 2,
-        title: 'Learn React in 24h!...'
-    }
-});
-
-// ---->> CART ACTIONS <----- ADD to cart
-store.dispatch({
-    type: 'ADD_TO_CART',
-    payload: [
-        {
-            id: 2
-        }
-    ]
-});
+]));

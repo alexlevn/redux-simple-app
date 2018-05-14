@@ -28,4 +28,4 @@ Steps
 
     8. ... 
 
-    
+    9. npm i --save-dev redux-logger
