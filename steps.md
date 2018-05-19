@@ -28,4 +28,9 @@ Steps
 
     8. ... 
 
+    ... If Get bugs with webpack-cli, try these commands:
+    npm uninstall -g webpack webpack-cli
+    npm install -g webpack webpack-cli
+    webpack
+
     9. npm i --save-dev redux-logger

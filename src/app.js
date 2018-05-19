@@ -11,6 +11,7 @@ import logger from 'redux-logger';
 
 // IMPORT COMBINED REDUCERS
 import reducers from './reducers/index';
+// reducer = module.export( default combineReducers{....})
 
 // IMPORT ACTIONS
 import {addToCard} from './actions/cartActions';
@@ -29,7 +30,10 @@ render(
 </Provider>, document.getElementById('app'))
 
 // store.subscribe(function () {     console.log('current state is: ',
+
 // store.getState());     // console.log('current price: - ',
 // store.getState()[0].price); }) store.dispatch(postBooks([ ])) ---->> CART
 // ACTIONS <----- ADD to cart Replact the pureaction by the cardAction
 // store.dispatch(addToCard([     {         id: 1     } ]));
+
+// What are you doing. I am surfing....

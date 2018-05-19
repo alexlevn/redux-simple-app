@@ -1,21 +1,16 @@
 'use strict'
 
 import React from 'react';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
-import {getBooks} from '../../actions/booksActions';
+import { connect } from 'react-redux';
+import { bindActionCreator, bindActionCreators } from 'redux';
+import { getBooks } from '../app';
 
 class BooksList extends React.Component {
-
-    componentDidMount(){
-        // Dispatch an action.
+    componentDidMount() {
         this.props.getBooks();
     }
 
     render() {
-
-        // console.log('ARE WE CAN ACESSSING THE STATE: ', this.props.books );
-
         const booksList = this
             .props
             .books
@@ -23,23 +18,22 @@ class BooksList extends React.Component {
                 return (
                     <div key={book.id}>
                         <h3>Title: {book.title}</h3>
-                        <h3>Description: {book.description}</h3>
-                        <h3>Price: {book.price}</h3>
+                        <p>Description: {book.description}</p>
+                        <p>Price: {book.price}</p>
                     </div>
                 )
-            })
-
+            });
         return (
             <div>
-                <h1>Hello React</h1>
+                <h2>Books List:</h2>
                 {booksList}
             </div>
-        );
+        )
     }
 }
 
 function mapStateToProp(state) {
-    return {books: state.books.books}
+    return { books: state.books.books }
 }
 
 function mapDispatchToProps(dispatch) {
@@ -48,5 +42,4 @@ function mapDispatchToProps(dispatch) {
     }, dispatch)
 }
 
-export default connect(mapStateToProp, mapDispatchToProps)(BooksList);
-
+export default connect(mapStateToProp, mapDispatchToProps)(BooksList);// Tra ra mot bookslist, co action, & prop
