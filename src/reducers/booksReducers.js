@@ -19,7 +19,8 @@ export function bookReducers(state = {
 }, action) {
     switch (action.type) {
 
-        case "POST_BOOK":
+        case "GET_BOOK":
+            console.log('Getting books...');
             return {
                 ...state,
                 books: [...state.books]
@@ -27,10 +28,11 @@ export function bookReducers(state = {
             break;
         case "POST_BOOK":
             // let books = state.books.concat(action.payload); return {books};
+            console.log('Posting a book');
             return {
                 books: [
                     ...state.books,
-                    ...action.payload
+                    action.payload
                 ]
             }
             break;

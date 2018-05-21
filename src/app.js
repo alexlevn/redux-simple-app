@@ -2,10 +2,10 @@
 
 // REACT
 import React from 'react';
-import {render} from 'react-dom';
-import {Provider} from 'react-redux';
+import { render } from 'react-dom';
+import { Provider } from 'react-redux';
 
-import {applyMiddleware, createStore} from 'redux';
+import { applyMiddleware, createStore } from 'redux';
 
 import logger from 'redux-logger';
 
@@ -14,8 +14,8 @@ import reducers from './reducers/index';
 // reducer = module.export( default combineReducers{....})
 
 // IMPORT ACTIONS
-import {addToCard} from './actions/cartActions';
-import {getBooks, postBooks, deleteBooks, updateBooks} from './actions/booksActions';
+import { addToCard } from './actions/cartActions';
+import { getBooks, postBooks, deleteBooks, updateBooks } from './actions/booksActions';
 
 // STEP 1: create the store const middleware = applyMiddleware(logger()); // old
 // version
@@ -26,14 +26,15 @@ import BooksList from './components/pages/booksList'
 
 render(
     <Provider store={store}>
-    <BooksList/>
-</Provider>, document.getElementById('app'))
+        <BooksList />
+    </Provider>, document.getElementById('app')
+);
 
-// store.subscribe(function () {     console.log('current state is: ',
+let action_a = postBooks({
+    id: 4,
+    title: 'Tôi là người Xây Dựng',
+    description: 'Viết về cách tôi Xây dựng hệ thống. Tạo ra giá trị',
+    price: 44
+});
+store.dispatch(action_a);
 
-// store.getState());     // console.log('current price: - ',
-// store.getState()[0].price); }) store.dispatch(postBooks([ ])) ---->> CART
-// ACTIONS <----- ADD to cart Replact the pureaction by the cardAction
-// store.dispatch(addToCard([     {         id: 1     } ]));
-
-// What are you doing. I am surfing....

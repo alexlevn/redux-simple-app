@@ -1,7 +1,7 @@
 'use strict'
 
 // GET A BOOK
-export function getBooks() {
+export function getBooks(books) {
     return {type: 'GET_BOOK'}
 }
 

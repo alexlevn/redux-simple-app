@@ -1,13 +1,18 @@
 'use strict'
 
 import React from 'react';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
-import {getBooks} from '../../actions/booksActions';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { getBooks } from '../../actions/booksActions';
+
+import { Gird, Col, Row, Button } from 'react-bootstrap';
+
+
+// import { BookItem } from './bookItem';
 
 class BooksList extends React.Component {
 
-    componentDidMount(){
+    componentDidMount() {
         // Dispatch an action.
         this.props.getBooks();
     }
@@ -23,23 +28,25 @@ class BooksList extends React.Component {
                 return (
                     <div key={book.id}>
                         <h3>Title: {book.title}</h3>
-                        <h3>Description: {book.description}</h3>
-                        <h3>Price: {book.price}</h3>
+                        <p>Description: {book.description}</p>
+                        <p>Price: {book.price}</p>
+                        <Button bsStyle='success'>Buy now</Button>
                     </div>
                 )
             })
 
         return (
-            <div>
-                <h1>Hello React</h1>
-                {booksList}
+            <div className="container">
+                <Row style={{ marginTop: '15px' }}>
+                    {booksList}
+                </Row>
             </div>
         );
     }
 }
 
 function mapStateToProp(state) {
-    return {books: state.books.books}
+    return { books: state.books.books }
 }
 
 function mapDispatchToProps(dispatch) {
