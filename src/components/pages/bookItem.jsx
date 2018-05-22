@@ -4,21 +4,17 @@ import React from 'react';
 import { Row, Col, Well, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { addToCart } from '../../actions/cartActions';
+import { addToCart, deleteCartItem } from '../../actions/cartActions';
 
 
 class BookItem extends React.Component {
+
     handleCart() {
-        // const book = [...this.props.carts, {
-        //     id: this.props.id,
-        //     title: this.props.title,
-        //     description: this.props.description
-        // }];
-        
         const book = {
-            id: this.props.id,
+            _id: this.props._id,
             description: this.props.description,
-            title: this.props.title
+            title: this.props.title,
+            price: this.props.price
         };
         this.props.addToCart(book);
     }

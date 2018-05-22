@@ -5,12 +5,12 @@
 export function bookReducers(state = {
     books: [
         {
-            id: 1,
+            _id: 1,
             title: "This is the first book",
             description: "this is the first book's description",
             price: 33
         }, {
-            id: 2,
+            _id: 2,
             title: "This is a seconde book",
             description: "this is the second book's description",
             price: 50
@@ -20,7 +20,7 @@ export function bookReducers(state = {
     switch (action.type) {
 
         case "GET_BOOK":
-            console.log('Getting books...');
+            // console.log('Getting books...');
             return {
                 ...state,
                 books: [...state.books]
@@ -28,7 +28,7 @@ export function bookReducers(state = {
             break;
         case "POST_BOOK":
             // let books = state.books.concat(action.payload); return {books};
-            console.log('Posting a book');
+            // console.log('Posting a book');
             return {
                 books: [
                     ...state.books,
@@ -39,7 +39,7 @@ export function bookReducers(state = {
         case 'DELETE_BOOK':
             const currentBookToDelete = [...state.books];
             const indexToDelete = currentBookToDelete.findIndex(function (book) {
-                return book.id === action.payload.id
+                return book._id === action.payload._id
             });
 
             return {
@@ -52,7 +52,7 @@ export function bookReducers(state = {
 
         case 'UPDATE_BOOK':
             const currentBooks = [...state.books];
-            const indexToUpdate = currentBooks.findIndex(book => book.id === action.payload.id);
+            const indexToUpdate = currentBooks.findIndex(book => book._id === action.payload._id);
             const updatedBook = {
                 ...currentBooks[indexToUpdate],
                 title: action.payload.title

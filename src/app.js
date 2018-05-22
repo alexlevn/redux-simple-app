@@ -21,14 +21,14 @@ import { getBooks, postBooks, deleteBooks, updateBooks } from './actions/booksAc
 // version
 
 // DÙNG MIDDLEWARE 1
-// const middleware = applyMiddleware(logger);
-// const store = createStore(reducers, middleware);
+const middleware = applyMiddleware(logger);
+const store = createStore(reducers, middleware);
 
 
 // MIDDLE WARE: Debug on Redux Console.
-const store = createStore(reducers,
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
+// const store = createStore(reducers,
+//     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+// );
 
 
 
@@ -48,8 +48,8 @@ let action_a = postBooks({
 });
 store.dispatch(action_a);
 
-let action_c = addToCart({ id: 1 });
-store.dispatch(action_c);
+// let action_c = addToCart({ id: 1 });
+// store.dispatch(action_c);
 
-let action_d = addToCart({ id: 2 });
-store.dispatch(action_d);
+// let action_d = addToCart({ id: 2 });
+// store.dispatch(action_d);
