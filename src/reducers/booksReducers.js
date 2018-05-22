@@ -6,12 +6,12 @@ export function bookReducers(state = {
     books: [
         {
             id: 1,
-            title: "this is the first book",
+            title: "This is the first book",
             description: "this is the first book's description",
             price: 33
         }, {
             id: 2,
-            title: "this is a seconde book",
+            title: "This is a seconde book",
             description: "this is the second book's description",
             price: 50
         }
@@ -32,7 +32,7 @@ export function bookReducers(state = {
             return {
                 books: [
                     ...state.books,
-                    action.payload
+                    ...action.payload
                 ]
             }
             break;

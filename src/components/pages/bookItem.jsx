@@ -6,7 +6,7 @@ import { Row, Col, Well, Button } from 'react-bootstrap';
 class BookItem extends React.Component {
     render() {
         return (
-            <div>
+            <div className="well">
                 <Row>
                     <Col xs={12}>
                         <h4>{this.props.title}</h4>

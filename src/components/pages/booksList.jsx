@@ -5,10 +5,11 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { getBooks } from '../../actions/booksActions';
 
-import { Gird, Col, Row, Button } from 'react-bootstrap';
+import { Grid, Col, Row, Button } from 'react-bootstrap';
 
 
 import BookItem from './bookItem';
+import BooksForm from './BooksForm';
 
 class BooksList extends React.Component {
 
@@ -27,31 +28,27 @@ class BooksList extends React.Component {
             .map(function (book) {
                 return (
 
-                    <div xs={12} sm={6} md={4} key={book.id} className="col">
+                    <Col xs={12} sm={6} md={4} key={book.id}>
                         <BookItem
                             id={book.id}
                             title={book.title}
                             description={book.description}
                             price={book.price}
                         />
-                    </div>
+                    </Col>
                 );
-                // return (
-                //     <div key={book.id}>
-                //         <h3>Title: {book.title}</h3>
-                //         <p>Description: {book.description}</p>
-                //         <p>Price: {book.price}</p>
-                //         <Button bsStyle='success'>Buy now</Button>
-                //     </div>
-                // );
             })
 
         return (
-            <div className="container">
+            // <div className="container">
+            <Grid>
                 <Row style={{ marginTop: '15px' }}>
+                    <Col xs={12} sm={6}>
+                        <BooksForm />
+                    </Col>
                     {booksList}
                 </Row>
-            </div>
+            </Grid>
         );
     }
 }

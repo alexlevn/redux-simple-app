@@ -14,7 +14,7 @@ import reducers from './reducers/index';
 // reducer = module.export( default combineReducers{....})
 
 // IMPORT ACTIONS
-import { addToCard } from './actions/cartActions';
+import { addToCart } from './actions/cartActions';
 import { getBooks, postBooks, deleteBooks, updateBooks } from './actions/booksActions';
 
 // STEP 1: create the store const middleware = applyMiddleware(logger()); // old
@@ -38,3 +38,8 @@ let action_a = postBooks({
 });
 store.dispatch(action_a);
 
+let action_c = addToCart({ id: 1 });
+store.dispatch(action_c);
+
+let action_d = addToCart({ id: 2 });
+store.dispatch(action_d);
