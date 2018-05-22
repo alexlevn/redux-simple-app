@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { Panel, Col, Row, Well, Button, ButtonGroup, Label } from 'react-bootstrap';
 
 import { bindActionCreators } from 'redux';
-import { deleteCartItem } from '../../actions/cartActions';
+import { deleteCartItem, updateCart } from '../../actions/cartActions';
 
 class Cart extends React.Component {
 
@@ -42,6 +42,17 @@ class Cart extends React.Component {
         return <div></div>
     }
 
+    onIncrement(_id) {
+        this.props.updateCart(_id, 1);
+    }
+
+    onDecrement(_id, quantity) {
+        if (quantity > 1) {
+            this.props.updateCart(_id, -1);
+        }
+        // else do no thing
+    }
+
     renderCart() {
         const cartItemsList = this.props.carts.map(function (cartItem) {
             return (
@@ -58,12 +69,18 @@ class Cart extends React.Component {
                         </Col>
 
                         <Col xs={12} sm={2}>
-                            <h6>qty. <Label bsStyle="success">3</Label></h6>
+                            <h6>qty. <Label bsStyle="success">{cartItem.quantity}</Label></h6>
                         </Col>
                         <Col xs={12} sm={4}>
                             <ButtonGroup style={{ minWidth: '300px' }}>
-                                <Button bsStyle="default" bsSize="small">-</Button>
-                                <Button bsStyle="default" bsSize="small">+</Button>
+                                <Button
+                                    bsStyle="default" bsSize="small"
+                                    onClick={this.onDecrement.bind(this, cartItem._id, cartItem.quantity)}
+                                >-</Button>
+                                <Button
+                                    bsStyle="default" bsSize="small"
+                                    onClick={this.onIncrement.bind(this, cartItem._id)}
+                                >+</Button>
                                 {/* <span>  </span> */}
                                 <Button
                                     onClick={this.onDelete.bind(this, cartItem._id)}
@@ -93,9 +110,10 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-    console.log('Binding Action..Callaction... and get Props Obj To State...');
+    // console.log('Binding Action..Callaction... and get Props Obj To State...');
     return bindActionCreators({
-        deleteCartItem: deleteCartItem
+        deleteCartItem: deleteCartItem,
+        updateCart: updateCart
     }, dispatch)
 }
 

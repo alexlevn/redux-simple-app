@@ -25,6 +25,26 @@ export function cartReducers(state = {
                 ]
             }
             break;
+
+        case 'UPDATE_CART':
+
+            const currentCartsToUpdate = [...state.carts];
+            const indexToUpdate = currentCartsToUpdate.findIndex(cart => cart._id === action._id);
+            const newCartToUpdate = {
+                ...currentCartsToUpdate[indexToUpdate],
+                quantity: currentCartsToUpdate[indexToUpdate].quantity + action.unit
+            }
+
+            let cartsUpdate = [
+                ...currentCartsToUpdate.slice(0, indexToUpdate),
+                newCartToUpdate,
+                ...currentCartsToUpdate.slice(indexToUpdate + 1)
+            ];
+
+            return {
+                carts: cartsUpdate
+            }
+            break;
     }
     return state;
 }
