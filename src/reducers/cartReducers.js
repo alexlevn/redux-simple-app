@@ -4,11 +4,11 @@
 export function cartReducers(state = {
     carts: []
 }, action) {
-    console.log('Going to cart reducer...');    
+    // console.log('Going to cart reducer...');    
 
     switch (action.type) {
         case 'ADD_TO_CART':
-            console.log('adding cart...');
+            // console.log('adding cart...');
             return {
                 carts: [
                     ...state.carts,

@@ -40,4 +40,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default Cart
+export default connect(mapStateToProps)(Cart);

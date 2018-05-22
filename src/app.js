@@ -19,8 +19,18 @@ import { getBooks, postBooks, deleteBooks, updateBooks } from './actions/booksAc
 
 // STEP 1: create the store const middleware = applyMiddleware(logger()); // old
 // version
-const middleware = applyMiddleware(logger);
-const store = createStore(reducers, middleware);
+
+// DÙNG MIDDLEWARE 1
+// const middleware = applyMiddleware(logger);
+// const store = createStore(reducers, middleware);
+
+
+// MIDDLE WARE: Debug on Redux Console.
+const store = createStore(reducers,
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
+
+
 
 import BooksList from './components/pages/booksList'
 
