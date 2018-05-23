@@ -1,3 +1,5 @@
+import { debug } from "util";
+
 'use strict';
 
 // CART REDUCERS
@@ -7,11 +9,15 @@ export function cartReducers(state = {
     // console.log('Going to cart reducer...');    
     switch (action.type) {
         case 'ADD_TO_CART':
+            let carts = [
+                ...state.carts,
+                action.payload,
+            ];
+
             return {
-                carts: [
-                    ...state.carts,
-                    action.payload
-                ]
+                carts,
+                totalAmount: totals(carts).amount,
+                totalQty: totals(carts).qty
             }
             break;
         case 'DELETE_CART_ITEM':
@@ -22,7 +28,9 @@ export function cartReducers(state = {
                 carts: [
                     // ...state.carts,
                     ...action.payload
-                ]
+                ],
+                totalAmount: totals(action.payload).amount,
+                totalQty: totals(action.payload).qty
             }
             break;
 
@@ -42,9 +50,27 @@ export function cartReducers(state = {
             ];
 
             return {
-                carts: cartsUpdate
+                carts: cartsUpdate,
+                totalAmount: totals(cartsUpdate).amount,
+                totalQty: totals(cartsUpdate).qty
             }
             break;
     }
     return state;
+}
+
+export function totals(payloadArr = []) {
+
+    const totalAmount = payloadArr
+        .map(item => item.price * item.quantity)
+        .reduce((total, newValue) => total + newValue, 0);
+
+    const totalQty = payloadArr
+        .map(item => item.quantity)
+        .reduce((count, b) => count + b, 0);
+
+    return {
+        amount: totalAmount,
+        qty: totalQty
+    }
 }
