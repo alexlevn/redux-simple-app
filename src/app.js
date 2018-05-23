@@ -5,6 +5,10 @@ import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 
+// REACT-ROUTER
+import { Router, Route, IndexRoute, browserHistory } from 'react-router';
+// import { hashHistory } from 'react-router';
+
 import { applyMiddleware, createStore } from 'redux';
 
 import logger from 'redux-logger';
@@ -30,27 +34,42 @@ const store = createStore(reducers, middleware);
 //     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 // );
 
+import Cart from './components/pages/cart';
 import BooksList from './components/pages/booksList';
-import Menu from './components/menu';
-import Footer from './components/footer';
+import BooksForm from './components/pages/booksForm';
+import Main from './main';
 
-render(
+// import createHistory from 'history/createBrowserHistory';
+// const history = createHistory()
+
+const abc = () => (<div>AAA</div>);
+
+const Routes = (
     <Provider store={store}>
-        <div>
-            <Menu />
-            <BooksList />
-            <Footer />>
-        </div>
-    </Provider>, document.getElementById('app')
+        {/* This way is use in the old version of react-route */}
+        <Router history={browserHistory}>
+            {/* <Router history={hashHistory}> */}
+            <Route path="/" component={Main}>
+                <IndexRoute component={BooksList} />
+                <Route path="/admin" component={BooksForm} />
+                <Route path="/cart" component={Cart} />
+                <Route path="/about" component={abc} />
+                <Route path="/contacts" component={abc} />
+            </Route>
+        </Router>
+    </Provider>
 );
 
-let action_a = postBooks({
-    id: 4,
-    title: 'Tôi là người Xây Dựng',
-    description: 'Viết về cách tôi Xây dựng hệ thống. Tạo ra giá trị',
-    price: 44
-});
-store.dispatch(action_a);
+
+render(Routes, document.getElementById('app'));
+
+// let action_a = postBooks({
+//     id: 4,
+//     title: 'Tôi là người Xây Dựng',
+//     description: 'Viết về cách tôi Xây dựng hệ thống. Tạo ra giá trị',
+//     price: 44
+// });
+// store.dispatch(action_a);
 
 // let action_c = addToCart({ id: 1 });
 // store.dispatch(action_c);

@@ -6,13 +6,15 @@ import { WSAEINVALIDPROVIDER } from 'constants';
 
 class Menu extends React.Component {
     render() {
+        // console.log('QTY = ', this.props.carts.totalQt);
+        // console.log('PROPS = ', this);
         return (
             <Navbar inverse fixedTop>
                 <Navbar.Header>
                     <Navbar.Brand>
                         <a href="/">React-Bootstrap</a>
                     </Navbar.Brand>
-                    <Navbar.Toggle/>>
+                    <Navbar.Toggle />>
                 </Navbar.Header>
                 <Navbar.Collapse>
                     <Nav>
@@ -22,7 +24,7 @@ class Menu extends React.Component {
                     <Nav pullRight>
                         <NavItem eventKey={1} href="/admin">Admin</NavItem>
                         <NavItem eventKey={1} href="/cart">Your cart
-                            <Badge className="badge">1</Badge>
+                            {(this.props.cartItemsNumber > 0) ? (<Badge className="badge">{this.props.cartItemsNumber}</Badge>) : (' ')}
                         </NavItem>
                     </Nav>
                 </Navbar.Collapse>
