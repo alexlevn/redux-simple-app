@@ -134,7 +134,7 @@ class Cart extends React.Component {
                     </Modal.Body>
                     <Modal.Footer>
                         <Col xs={6}>
-                            <h6>total $: </h6>
+                            <h6>total $: {this.props.totalAmount} </h6>
                         </Col>
                         <Button onClick={this.close.bind(this)}>Close</Button>
                     </Modal.Footer>

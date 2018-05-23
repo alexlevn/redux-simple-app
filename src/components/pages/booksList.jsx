@@ -39,8 +39,9 @@ class BooksList extends React.Component {
             })
 
         return (
-            // <div className="container">
-            <Grid>
+            <Grid
+            // style={{ marginTop: '60px' }}
+            >
                 <Row>
                     <Cart />
                 </Row>
