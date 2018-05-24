@@ -34,3 +34,11 @@ Steps
     webpack
 
     9. npm i --save-dev redux-logger
+
+## Section 3:
+    1. Backup the package.json file to bk.package.json
+    2. npm install express-generator -g
+    3. express
+        'y' for update the package.json
+    4. npm install // to install new express pagekage.
+    5. copy some parts from bk.package.json to package.json
