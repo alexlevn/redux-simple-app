@@ -42,3 +42,35 @@ Steps
         'y' for update the package.json
     4. npm install // to install new express pagekage.
     5. copy some parts from bk.package.json to package.json
+
+    6. Install mongodb
+    7. mkdir .../mongodb/dbs
+    8. Run mongod from bin folder:
+        ./mongod --dbpath ~/Application/mongodb/dbs
+    9. Install Robomongo
+
+        ps -ax: view all the process
+
+    10. MongoDB Query sample:
+        db.books.find({
+            'price': {$gt: 21}
+        })
+        ... CRUD
+    
+    11. npm i --save mongoose
+        
+        npm i nodemon -g
+        npm i --save-dev nodemon
+        // nodemon => không cần phải restart server nữa (?) đỡ mất thời gian (khác webpack -w như thế nào ?)
+
+    12: NOTE: post in Advanced REST Client App.
+        The example of JSon Obj:
+        {
+            "title":" tieu de sach ",
+            "description": "mo ta sach", 
+            "price": 456
+        }
+
+        use symble ". do not use this symbl '
+
+    13 .

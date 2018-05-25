@@ -28,7 +28,6 @@ import { getBooks, postBooks, deleteBooks, updateBooks } from './actions/booksAc
 const middleware = applyMiddleware(logger);
 const store = createStore(reducers, middleware);
 
-
 // MIDDLE WARE: Debug on Redux Console.
 // const store = createStore(reducers,
 //     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
@@ -42,19 +41,26 @@ import Main from './main';
 // import createHistory from 'history/createBrowserHistory';
 // const history = createHistory()
 
-const abc = () => (<div>AAA</div>);
+const About = () => (
+    <div>
+        About page.
+    </div>
+);
+const Contact = () => (
+    <div>
+        Contact page.
+    </div>
+);
 
 const Routes = (
     <Provider store={store}>
-        {/* This way is use in the old version of react-route */}
         <Router history={browserHistory}>
-            {/* <Router history={hashHistory}> */}
             <Route path="/" component={Main}>
                 <IndexRoute component={BooksList} />
                 <Route path="/admin" component={BooksForm} />
                 <Route path="/cart" component={Cart} />
-                <Route path="/about" component={abc} />
-                <Route path="/contacts" component={abc} />
+                <Route path="/about" component={About} />
+                <Route path="/contacts" component={Contact} />
             </Route>
         </Router>
     </Provider>
@@ -76,3 +82,22 @@ render(Routes, document.getElementById('app'));
 
 // let action_d = addToCart({ id: 2 });
 // store.dispatch(action_d);
+
+// {
+//     'title': 'Tôi là người Xây Dựng',
+//         'description': 'Viết về cách tôi Xây dựng hệ thống. Tạo ra giá trị',
+//             'price': 44
+// }
+
+// [
+//     {
+//         'title': 'Tôi là người Xây Dựng',
+//         'description': 'Viết về cách tôi Xây dựng hệ thống. Tạo ra giá trị',
+//         'price': 44
+//     },
+    // {
+    //     'title': 'ABC Tôi là người Xây Dựng',
+    //     'description': 'DEFADF về cách tôi Xây dựng hệ thống. Tạo ra giá trị',
+    //     'price': 55
+    // }
+// ]

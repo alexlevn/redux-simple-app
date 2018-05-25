@@ -12,6 +12,6 @@ app.get('*', function(req,res){
     res.sendFile(path.resolve(__dirname, 'public', 'index.html'))
 });
 
-app.listen(3000, function(){
-    console.log('Sever is listening on port 3000');
+app.listen(3003, function(){
+    console.log('Sever is listening on port 3003');
 });
