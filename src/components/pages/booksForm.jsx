@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import { findDOMNode } from 'react-dom';
-import { postBooks, deleteBooks } from '../../actions/booksActions';
+import { postBooks, deleteBooks, getBooks } from '../../actions/booksActions';
 
 import axios from 'axios';
 
@@ -24,6 +24,8 @@ class BooksForm extends React.Component {
     }
 
     componentDidMount() {
+        this.props.getBooks();
+
         axios.get('/api/images')
             .then(function (res) {
                 this.setState({ images: res.data });
@@ -35,9 +37,10 @@ class BooksForm extends React.Component {
 
     handleSubmit() {
         const book = [{
-            id: 5,
+            // id: 5,
             title: findDOMNode(this.refs.title).value,
             description: findDOMNode(this.refs.description).value,
+            images: findDOMNode(this.refs.images).value,
             price: findDOMNode(this.refs.price).value
         }];
         // console.log(book);
@@ -81,7 +84,7 @@ class BooksForm extends React.Component {
                     <Col xs={12} sm={6}>
                         <Panel>
                             <InputGroup>
-                                <FormControl type="text" ref="image" value={this.state.img} />
+                                <FormControl type="text" ref="images" value={this.state.img} />
                                 <DropdownButton
                                     componentClass={InputGroup.Button}
                                     id="input-dropdown-addon"
@@ -156,7 +159,8 @@ function mapStatetoProps(state) {
 function mapDispatchToProps(dispatch) {
     return bindActionCreators({
         postBooks,
-        deleteBooks
+        deleteBooks,
+        getBooks
     }, dispatch);
 }
 
