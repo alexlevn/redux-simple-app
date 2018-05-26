@@ -120,28 +120,6 @@ const store = createStore(reducers, middleware);
 //     console.log('current state is: ', store.getState());
 // });
 
-// /* EXAMPLE DATA TEST */
-
-// store.dispatch({
-//     type: 'GET_BOOKS'
-// });
-
-// store.dispatch({
-//     type: 'UPDATE_BOOKS',
-//     payload: {
-//         id: 2,
-//         title: 'TIEU DE QUYEN THU 2 DUOC UPDATE',
-//         description: 'cai nay chua thay doi. Da duoc thay doi'
-//     }
-// });
-
-// store.dispatch({
-//     type: 'DELETE_BOOKS',
-//     payload: {
-//         id: 1
-//     }
-// })
-
 import BooksList from './components/booksList';
 
 render(

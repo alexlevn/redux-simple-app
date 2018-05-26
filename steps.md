@@ -74,3 +74,11 @@ Steps
         use symble ". do not use this symbl '
 
     13: npm i --save axios redux-thunk
+
+    14: call to api functions
+
+    15: Set up a Reverse Proxy
+        - duplicate the app.js file to one file: apiServer.js
+        - change some code...
+        - npm i --save http-proxy
+        
