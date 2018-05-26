@@ -16,8 +16,7 @@ class Cart extends React.Component {
 
         const currentCartToDelete = this.props.cart;
         const indexToDelete = currentCartToDelete.findIndex(cartItem => cartItem._id === _id);
-
-
+        
         let cartAfterDelete = [
             ...currentCartToDelete.slice(0, indexToDelete),
             ...currentCartToDelete.slice(indexToDelete + 1)

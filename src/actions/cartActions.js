@@ -37,15 +37,16 @@ export function addToCart(cart) {
 
 // DELETE CART ITEM
 export function deleteCartItem(cart) {
-    // console.log("Creating the action: ADD_TO_CART")
+    console.log("Creating the action: DELETE_CART, cart - after delete: ", cart)
 
     return function (dispatch) {
         axios.post('/api/cart', cart)
             .then(function (res) {
-                dispatch({ type: 'DELETE_CART', payload: res.data });
+                console.log('res.data = ', res.data);
+                dispatch({ type: 'DELETE_CART_ITEM', payload: res.data });
             })
             .catch(function (err) {
-                dispatch({ type: 'DELETE_CART_REJECTED', msg: 'error when deleting an item from the cart: ' + err })
+                dispatch({ type: 'DELETE_CART_ITEM_REJECTED', msg: 'error when deleting an item from the cart: ' + err })
             })
     }
 
