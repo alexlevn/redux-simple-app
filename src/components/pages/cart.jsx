@@ -11,19 +11,14 @@ class Cart extends React.Component {
 
     onDelete(_id) {
 
-        // console.log('delete id = ', _id);
+        const currentCartToDelete = this.props.cart;
+        const indexToDelete = currentCartToDelete.findIndex(cartItem => cartItem._id === _id);
 
-        const currentCartToDelete = this.props.carts;
-        const indexToDelete = currentCartToDelete.findIndex(cart => cart._id === _id);
-
-        // console.log('indexToDelete = ', indexToDelete);
 
         let cartAfterDelete = [
             ...currentCartToDelete.slice(0, indexToDelete),
             ...currentCartToDelete.slice(indexToDelete + 1)
         ]
-
-        // console.log("Cart after delete: ", cartAfterDelete);
 
         console.log('onDelete() function...');
         this.props.deleteCartItem(cartAfterDelete);
@@ -46,8 +41,8 @@ class Cart extends React.Component {
     }
 
     render() {
-        if (this.props.carts[0]) {
-            // console.log('there is one book');
+        if (this.props.cart[0]) {
+            // console.log('there is atleast one book');
             return this.renderCart();
         } else {
             return this.renderEmpty();
@@ -70,7 +65,7 @@ class Cart extends React.Component {
     }
 
     renderCart() {
-        const cartItemsList = this.props.carts.map(function (cartItem) {
+        const cartItemsList = this.props.cart.map(function (cartItem) {
             return (
                 <Panel
                     key={cartItem._id}
@@ -146,14 +141,13 @@ class Cart extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        carts: state.carts.carts,
-        totalAmount: state.carts.totalAmount,
-        totalQty: state.carts.totalQty
+        cart: state.cart.cart,
+        totalAmount: state.cart.totalAmount,
+        totalQty: state.cart.totalQty
     }
 }
 
 function mapDispatchToProps(dispatch) {
-    // console.log('Binding Action..Callaction... and get Props Obj To State...');
     return bindActionCreators({
         deleteCartItem: deleteCartItem,
         updateCart: updateCart

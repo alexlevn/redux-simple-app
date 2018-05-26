@@ -1,19 +1,12 @@
 var createError = require('http-errors');
 var express = require('express');
-// var path = require('path');
 var cookieParser = require('cookie-parser');
-// var logger = require('morgan');
-
-// var indexRouter = require('./routes/index');
-// var usersRouter = require('./routes/users');
 
 var app = express();
 
-// app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-// app.use(express.static(path.join(__dirname, 'public')));
 
 // APIs
 var mongoose = require('mongoose');
@@ -81,10 +74,8 @@ app.put('/books/:_id', function (req, res) {
 
   Books.findOneAndUpdate(query, update, options, function (err, books) {
     if (err) {
-      // console.log('----- getting err');
       throw err;
     };
-    // console.log('----- update successfully!');
     res.json(books);
   })
 
@@ -92,8 +83,8 @@ app.put('/books/:_id', function (req, res) {
 
 // END APIs
 
-app.listen(3006, function(err){
-  if(err){
+app.listen(3006, function (err) {
+  if (err) {
     return console.log(err);
   }
   console.log('API Server is listening on http://localhost:3006');

@@ -6,7 +6,7 @@ import { WSAEINVALIDPROVIDER } from 'constants';
 
 class Menu extends React.Component {
     render() {
-        // console.log('QTY = ', this.props.carts.totalQt);
+        // console.log('QTY = ', this.props.cart.totalQt);
         // console.log('PROPS = ', this);
         return (
             <Navbar inverse fixedTop>

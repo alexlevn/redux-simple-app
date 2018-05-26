@@ -21,7 +21,7 @@ class Main extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        totalQty: state.carts.totalQty
+        totalQty: state.cart.totalQty
     }
 }
 

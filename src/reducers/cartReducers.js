@@ -1,23 +1,21 @@
-// import { debug } from "util";
-
 'use strict';
 
 // CART REDUCERS
 export function cartReducers(state = {
-    carts: []
+    cart: []
 }, action) {
     // console.log('Going to cart reducer...');    
     switch (action.type) {
         case 'ADD_TO_CART':
-            let carts = [
-                ...state.carts,
+            let cart = [
+                ...state.cart,
                 action.payload,
             ];
 
             return {
-                carts,
-                totalAmount: totals(carts).amount,
-                totalQty: totals(carts).qty
+                cart,
+                totalAmount: totals(cart).amount,
+                totalQty: totals(cart).qty
             }
             break;
         case 'DELETE_CART_ITEM':
@@ -25,8 +23,8 @@ export function cartReducers(state = {
             // console.log("Carts after delete:", action.payload)
             // Why do not execute the delete process in this func?
             return {
-                carts: [
-                    // ...state.carts,
+                cart: [
+                    // ...state.cart,
                     ...action.payload
                 ],
                 totalAmount: totals(action.payload).amount,
@@ -36,7 +34,7 @@ export function cartReducers(state = {
 
         case 'UPDATE_CART':
 
-            const currentCartsToUpdate = [...state.carts];
+            const currentCartsToUpdate = [...state.cart];
             const indexToUpdate = currentCartsToUpdate.findIndex(cart => cart._id === action._id);
             const newCartToUpdate = {
                 ...currentCartsToUpdate[indexToUpdate],
@@ -50,7 +48,7 @@ export function cartReducers(state = {
             ];
 
             return {
-                carts: cartsUpdate,
+                cart: cartsUpdate,
                 totalAmount: totals(cartsUpdate).amount,
                 totalQty: totals(cartsUpdate).qty
             }

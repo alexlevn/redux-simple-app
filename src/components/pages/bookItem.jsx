@@ -19,11 +19,11 @@ class BookItem extends React.Component {
         };
 
         // CHECK IF CART IS EMPTY
-        if (this.props.carts.length > 0) {
+        if (this.props.cart.length > 0) {
             // CART IS NOT EMPTY
 
             let _id = this.props._id;
-            let cartIndex = this.props.carts.findIndex(cart => cart._id === _id);
+            let cartIndex = this.props.cart.findIndex(cartItem => cartItem._id === _id);
 
             // IF RETURN TO -1 THERE ARE NO ITEMS WITH SAME ID
             if (cartIndex === -1) {
@@ -35,7 +35,6 @@ class BookItem extends React.Component {
         } else {
             // CART IS EMPTY
             this.props.addToCart(book);
-
         }
 
     }
@@ -58,7 +57,7 @@ class BookItem extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        carts: state.carts.carts
+        cart: state.cart.cart
     }
 }
 
