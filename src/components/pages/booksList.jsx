@@ -27,7 +27,9 @@ class BooksList extends React.Component {
             .books
             .map(function (book) {
                 return (
-                    <Col xs={12} sm={6} md={6} key={book._id}>
+                    <Col xs={12}
+                        // sm={6} md={6}
+                        key={book._id}>
                         <BookItem
                             _id={book._id}
                             title={book.title}
@@ -46,7 +48,9 @@ class BooksList extends React.Component {
                     <Cart />
                 </Row>
                 <Row style={{ marginTop: '15px' }}>
-                    <Col xs={12} sm={6}>
+                    <Col xs={12}
+                        // sm={6}
+                    >
                         <BooksForm />
                     </Col>
                     {booksList}

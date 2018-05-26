@@ -31,16 +31,6 @@ app.use(session({
   // ttl: 2 days * 24 hours * 60 minutes * 60 seconds
 }))
 
-
-// app.use(session({
-//   secret: 'mySecretString',
-//   saveUninitialized: false,
-//   resave: false,
-//   cookie: { maxAge: 1000 * 60 * 60 * 24 * 2 }, // 2 days in milliseconds
-//   store: new MongoStore({ mongooseConnection: db, ttl: 2 * 24 * 60 * 60 })
-//   //ttl: 2 days * 24 hours * 60 minutes * 60 seconds
-// }))
-
 // SAVE TO SESSION CART API
 app.post('/cart', function (req, res) {
   var cart = req.body;
@@ -132,6 +122,28 @@ app.put('/books/:_id', function (req, res) {
   })
 
 });
+
+// --------- GET BOOKS IMAGES API ------------
+app.get('/images', function (req, res) {
+  const imgFolder = __dirname + '/public/images';
+  // REQUIRE FILE SYSTEM
+  const fs = require('fs');
+  fs.readdir(imgFolder, function (err, files) {
+    if (err) {
+      return console.log(err);
+    }
+
+    // CREATE AN EMPTY ARRAY
+    const fileArr = [];
+
+    // ITERATE ALL IMAGES IN THE DIRECTORY AND ADD TO THE ARRAY
+    files.forEach(function (file) {
+      fileArr.push({ name: file });
+    });
+
+    res.json(fileArr);
+  })
+})
 
 // END APIs
 
