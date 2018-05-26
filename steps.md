@@ -81,4 +81,9 @@ Steps
         - duplicate the app.js file to one file: apiServer.js
         - change some code...
         - npm i --save http-proxy
-        
+
+    16. Start persistent shopping cart => need to save session_id to 
+    mongodb
+        reference: npmjs with connect-mongo package
+    
+    17. 
