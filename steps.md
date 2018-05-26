@@ -73,4 +73,4 @@ Steps
 
         use symble ". do not use this symbl '
 
-    13 .
+    13: npm i --save axios redux-thunk

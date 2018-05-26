@@ -3,19 +3,7 @@
 // STEP 3: BOOKS REDUCER
 
 export function bookReducers(state = {
-    books: [
-        {
-            _id: 1,
-            title: "This is the first book",
-            description: "this is the first book's description",
-            price: 33
-        }, {
-            _id: 2,
-            title: "This is a seconde book",
-            description: "this is the second book's description",
-            price: 50
-        }
-    ]
+    books: []
 }, action) {
     switch (action.type) {
 
@@ -23,7 +11,7 @@ export function bookReducers(state = {
             // console.log('Getting books...');
             return {
                 ...state,
-                books: [...state.books]
+                books: [...action.payload]
             };
             break;
         case "POST_BOOK":
@@ -48,6 +36,7 @@ export function bookReducers(state = {
                     ...currentBookToDelete.slice(indexToDelete + 1)
                 ]
             }
+
             break;
 
         case 'UPDATE_BOOK':

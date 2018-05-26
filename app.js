@@ -23,9 +23,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/bookshop');
+// If there is no db, it will create one. 
+
 
 var Books = require('./models/books.js');
-
 
 // POST BOOKS ---------
 app.post('/books', function (req, res) {

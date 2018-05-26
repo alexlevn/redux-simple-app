@@ -10,8 +10,8 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 // import { hashHistory } from 'react-router';
 
 import { applyMiddleware, createStore } from 'redux';
-
 import logger from 'redux-logger';
+import thunk from 'redux-thunk';
 
 // IMPORT COMBINED REDUCERS
 import reducers from './reducers/index';
@@ -25,7 +25,7 @@ import { getBooks, postBooks, deleteBooks, updateBooks } from './actions/booksAc
 // version
 
 // DÙNG MIDDLEWARE 1
-const middleware = applyMiddleware(logger);
+const middleware = applyMiddleware(thunk, logger);
 const store = createStore(reducers, middleware);
 
 // MIDDLE WARE: Debug on Redux Console.
@@ -82,22 +82,3 @@ render(Routes, document.getElementById('app'));
 
 // let action_d = addToCart({ id: 2 });
 // store.dispatch(action_d);
-
-// {
-//     'title': 'Tôi là người Xây Dựng',
-//         'description': 'Viết về cách tôi Xây dựng hệ thống. Tạo ra giá trị',
-//             'price': 44
-// }
-
-// [
-//     {
-//         'title': 'Tôi là người Xây Dựng',
-//         'description': 'Viết về cách tôi Xây dựng hệ thống. Tạo ra giá trị',
-//         'price': 44
-//     },
-    // {
-    //     'title': 'ABC Tôi là người Xây Dựng',
-    //     'description': 'DEFADF về cách tôi Xây dựng hệ thống. Tạo ra giá trị',
-    //     'price': 55
-    // }
-// ]

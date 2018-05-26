@@ -13,6 +13,7 @@ class Main extends React.Component {
                 <Menu cartItemsNumber={this.props.totalQty} />
                 {this.props.children}
                 <Footer />
+                {/* <p>ABC HELLO TEST </p> */}
             </div>
         )
     }
