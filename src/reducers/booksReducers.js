@@ -31,7 +31,8 @@ export function bookReducers(state = {
             return {
                 ...state,
                 msg: 'Please, try a gain',
-                style: 'danger'
+                style: 'danger',
+                validation: 'error'
             };
 
             break;
@@ -72,7 +73,8 @@ export function bookReducers(state = {
             return {
                 ...state,
                 msg: null,
-                style: 'primary'
+                style: 'primary',
+                validation: null
             }
             break;
     }

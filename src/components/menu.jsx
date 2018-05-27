@@ -1,6 +1,12 @@
 'use strict'
 
 import React from 'react';
+import {connect} from 'react-redux';
+import { bindActionCreators } from 'redux';
+
+// import { resetButton, postBooks, deleteBooks, getBooks } from '../../actions/booksActions';
+
+
 import { Nav, NavItem, Navbar, Badge } from 'react-bootstrap';
 import { WSAEINVALIDPROVIDER } from 'constants';
 
@@ -32,5 +38,26 @@ class Menu extends React.Component {
         );
     }
 };
+
+
+
+// function mapStatetoProps(state) {
+//     return {
+//         books: state.books.books,
+//         cart: state.cart.cart
+//     }
+// }
+
+// function mapDispatchToProps(dispatch) {
+//     return bindActionCreators({
+//         postBooks,
+//         deleteBooks,
+//         getBooks,
+//         resetButton
+//     }, dispatch);
+// }
+
+
+// export default connect(mapStatetoProps, null)(Menu);
 
 export default Menu;

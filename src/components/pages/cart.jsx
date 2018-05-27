@@ -8,7 +8,7 @@ import { bindActionCreators } from 'redux';
 import { deleteCartItem, updateCart, getCart } from '../../actions/cartActions';
 
 class Cart extends React.Component {
-    componentDidMount(){
+    componentDidMount() {
         this.props.getCart();
     }
 
@@ -16,7 +16,7 @@ class Cart extends React.Component {
 
         const currentCartToDelete = this.props.cart;
         const indexToDelete = currentCartToDelete.findIndex(cartItem => cartItem._id === _id);
-        
+
         let cartAfterDelete = [
             ...currentCartToDelete.slice(0, indexToDelete),
             ...currentCartToDelete.slice(indexToDelete + 1)
@@ -108,35 +108,43 @@ class Cart extends React.Component {
 
         // return cartItemsList;
         return (
-            <Panel header="Cart" bsStyle="primary" style={{ margin: '15px' }}>
-                {cartItemsList}
-                <Row style={{ padding: '15px' }}>
-                    <Col xs={12}>
-                        <h6>Total amount: {this.props.totalAmount}</h6>
-                        <Button
-                            onClick={this.open.bind(this)}
-                            bsStyle="success"
-                            bsSize="small">
-                            PROCESS TO CHECKOUT
-                    </Button>
-                    </Col>
-                </Row>
-                <Modal show={this.state.showModal} onHide={this.close.bind(this)}>
-                    <Modal.Header closeButton>
-                        <Modal.Title>Thank you!</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-                        <h6>Your order has been saved!</h6>
-                        <p>You will receive an email confirmation.</p>
-                    </Modal.Body>
-                    <Modal.Footer>
-                        <Col xs={6}>
-                            <h6>total $: {this.props.totalAmount} </h6>
+            <div className="container">
+            
+                <Panel header="Cart" bsStyle="primary" style={{ marginTop: '15px' }}>
+                    <Row>
+                        <Col>
+                            {cartItemsList}
                         </Col>
-                        <Button onClick={this.close.bind(this)}>Close</Button>
-                    </Modal.Footer>
-                </Modal>
-            </Panel>
+                    </Row>
+                    <Row style={{ padding: '15px' }}>
+                        <Col xs={12}>
+                            <h6>Total amount: {this.props.totalAmount}</h6>
+                            <Button
+                                onClick={this.open.bind(this)}
+                                bsStyle="success"
+                                bsSize="small">
+                                PROCESS TO CHECKOUT
+                    </Button>
+                        </Col>
+                    </Row>
+                    <Modal show={this.state.showModal} onHide={this.close.bind(this)}>
+                        <Modal.Header closeButton>
+                            <Modal.Title>Thank you!</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>
+                            <h6>Your order has been saved!</h6>
+                            <p>You will receive an email confirmation.</p>
+                        </Modal.Body>
+                        <Modal.Footer>
+                            <Col xs={6}>
+                                <h6>total $: {this.props.totalAmount} </h6>
+                            </Col>
+                            <Button onClick={this.close.bind(this)}>Close</Button>
+                        </Modal.Footer>
+                    </Modal>
+                </Panel>
+            
+            </div>
         )
     }
 }
