@@ -86,4 +86,9 @@ Steps
     mongodb
         reference: npmjs with connect-mongo package
     
-    17. 
+    17. ....
+
+
+    xx: Capture server exceptions..
+
+        replace: throw(err) by console.log(err);
