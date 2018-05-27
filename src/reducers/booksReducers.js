@@ -18,11 +18,22 @@ export function bookReducers(state = {
             // let books = state.books.concat(action.payload); return {books};
             // console.log('Posting a book');
             return {
+                ...state,
                 books: [
                     ...state.books,
                     ...action.payload
-                ]
+                ],
+                msg: 'Saved! Click to continue',
+                style: 'success'
             }
+            break;
+        case "POST_BOOK_REJECTED":
+            return {
+                ...state,
+                msg: 'Please, try a gain',
+                style: 'danger'
+            };
+
             break;
         case 'DELETE_BOOK':
             const currentBookToDelete = [...state.books];
@@ -55,6 +66,13 @@ export function bookReducers(state = {
                     updatedBook,
                     ...currentBooks.slice(indexToUpdate + 1)
                 ]
+            }
+            break;
+        case 'RESET_BUTTON':
+            return {
+                ...state,
+                msg: null,
+                style: 'primary'
             }
             break;
     }

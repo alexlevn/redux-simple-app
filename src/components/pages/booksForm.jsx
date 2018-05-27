@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import { findDOMNode } from 'react-dom';
-import { postBooks, deleteBooks, getBooks } from '../../actions/booksActions';
+import { resetButton, postBooks, deleteBooks, getBooks } from '../../actions/booksActions';
 
 import axios from 'axios';
 
@@ -57,6 +57,15 @@ class BooksForm extends React.Component {
         this.setState({
             img: '/images/' + img
         });
+    }
+
+    resetForm() {
+        // RESET Button
+        this.props.resetButton();
+        this.setState({ img: '' });
+        findDOMNode(this.refs.title).value = '';
+        findDOMNode(this.refs.description).value = '';
+        findDOMNode(this.refs.price).value = '';
     }
 
     render() {
@@ -122,9 +131,9 @@ class BooksForm extends React.Component {
                                     ref="price" />
                             </FormGroup>
                             <Button
-                                onClick={this.handleSubmit.bind(this)}
-                                bsStyle="primary">
-                                Save book
+                                onClick={(!this.props.msg) ? (this.handleSubmit.bind(this)) : (this.resetForm.bind(this))}
+                                bsStyle={(!this.props.msg) ? ("primary") : (this.props.style)}>
+                                {(!this.props.msg) ? ("Save Book") : (this.props.msg)}
                             </Button>
                         </Panel>
                         <Panel style={{ padding: '15px' }}>
@@ -152,7 +161,9 @@ class BooksForm extends React.Component {
 
 function mapStatetoProps(state) {
     return {
-        books: state.books.books
+        books: state.books.books,
+        msg: state.books.msg,
+        style: state.books.style
     }
 }
 
@@ -160,7 +171,8 @@ function mapDispatchToProps(dispatch) {
     return bindActionCreators({
         postBooks,
         deleteBooks,
-        getBooks
+        getBooks,
+        resetButton
     }, dispatch);
 }
 
