@@ -124,7 +124,7 @@ class Cart extends React.Component {
                                 bsStyle="success"
                                 bsSize="small">
                                 PROCESS TO CHECKOUT
-                    </Button>
+                            </Button>
                         </Col>
                     </Row>
                     <Modal show={this.state.showModal} onHide={this.close.bind(this)}>
