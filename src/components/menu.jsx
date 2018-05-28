@@ -41,12 +41,12 @@ class Menu extends React.Component {
 
 
 
-// function mapStatetoProps(state) {
-//     return {
-//         books: state.books.books,
-//         cart: state.cart.cart
-//     }
-// }
+function mapStatetoProps(state) {
+    return {
+        books: state.books.books,
+        cart: state.cart.cart
+    }
+}
 
 // function mapDispatchToProps(dispatch) {
 //     return bindActionCreators({
@@ -58,6 +58,6 @@ class Menu extends React.Component {
 // }
 
 
-// export default connect(mapStatetoProps, null)(Menu);
+export default connect(mapStatetoProps, null)(Menu);
 
-export default Menu;
+// export default Menu;

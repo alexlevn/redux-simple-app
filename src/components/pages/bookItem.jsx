@@ -39,14 +39,14 @@ class BookItem extends React.Component {
 
             // IF RETURN TO -1 THERE ARE NO ITEMS WITH SAME ID
             if (cartIndex === -1) {
-                this.props.addToCart(book);
+                this.props.addToCart([book]);
             } else {
                 this.props.updateCart(_id, 1, this.props.cart);
             }
 
         } else {
             // CART IS EMPTY
-            this.props.addToCart(book);
+            this.props.addToCart([book]);
         }
 
     }

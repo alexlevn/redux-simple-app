@@ -18,7 +18,7 @@ export function cartReducers(state = {
         case 'ADD_TO_CART':
             let cart = [
                 ...state.cart,
-                action.payload,
+                ...action.payload,
             ];
 
             return {
