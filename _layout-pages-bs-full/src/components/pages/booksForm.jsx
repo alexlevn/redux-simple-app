@@ -26,7 +26,6 @@ export default class BooksForm extends React.Component {
                             </DropdownButton>
                         </InputGroup>
                     </Panel>
-
                 </Col>
 
                 <Col xs={12} sm={6}>
@@ -65,6 +64,7 @@ export default class BooksForm extends React.Component {
                             Save Book
                         </Button>
                     </Panel>
+                    
                     <Panel style={{ padding: '15px' }}>
                         <FormGroup>
                             <ControlLabel>Select a book to delect</ControlLabel>

@@ -16,7 +16,7 @@ class BookItem extends React.Component {
             <Well>
                 <Row>
                     <Col xs={4}>
-                        <Image src={'images/' + this.props.name }responsive />
+                        <Image src={'images/' + this.props.name } responsive />
                     </Col>
                     <Col xs={8}>
                         <h4>Chiến lược đầu tư Benjamin GraHam</h4>

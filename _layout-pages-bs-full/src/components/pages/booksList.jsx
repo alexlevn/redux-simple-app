@@ -1,9 +1,8 @@
 'use strict'
 
 import React from 'react';
-
 import { Carousel, Grid, Col, Row, Button } from 'react-bootstrap';
-import BookItem from './bookItem';
+import BookItem from './bookItem';Ï
 
 class BooksList extends React.Component {
     render() {
