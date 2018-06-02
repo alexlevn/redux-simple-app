@@ -1,3 +1,8 @@
+
+require('babel-core/register')({
+  "presets": ["es2015", "react", "stage-1"]
+});
+
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -5,6 +10,7 @@ var logger = require('morgan');
 
 // PROXY
 var httpProxy = require('http-proxy');
+
 var requestHandler = require('./requestHandler');
 
 var indexRouter = require('./routes/index');
@@ -17,6 +23,7 @@ app.use(logger('dev')); // need it during develpment to look all routes request
 const apiProxy = httpProxy.createProxyServer({
   target: 'http://localhost:3006'
 });
+
 app.use('/api', function (req, res) {
   apiProxy.web(req, res);
 });

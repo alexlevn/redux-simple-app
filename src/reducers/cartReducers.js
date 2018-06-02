@@ -17,8 +17,8 @@ export function cartReducers(state = {
 
         case 'ADD_TO_CART':
             let cart = [
-                ...state.cart,
-                ...action.payload,
+                // ...state.cart, // đã add xong và trả về mảng kết quả ở payload.
+                ...action.payload
             ];
 
             return {
@@ -39,7 +39,7 @@ export function cartReducers(state = {
 
         case 'UPDATE_CART':
             return {
-                cart: action.payload,
+                cart: action.payload, // Làm như 2 phương thức trên (add & del) cũng đúng
                 totalAmount: totals(action.payload).amount,
                 totalQty: totals(action.payload).qty
             }

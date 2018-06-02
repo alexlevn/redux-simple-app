@@ -25,6 +25,8 @@ export function addToCart(cart) {
     return function (dispatch) {
         // Post to api server, waiting for getting res.data
         // When got the data. Put it to the dispatch function (return function)
+
+        console.log('--- cart = ', cart);
         axios.post('/api/cart', cart)
             .then(function (res) {
                 dispatch({ type: 'ADD_TO_CART', payload: res.data });
@@ -33,28 +35,6 @@ export function addToCart(cart) {
                 dispatch({ type: 'ADD_TO_CART_REJECTED', msg: 'error when adding to the cart: ' + err })
             })
     }
-}
-
-// DELETE CART ITEM
-export function deleteCartItem(cart) {
-    console.log("Creating the action: DELETE_CART, cart - after delete: ", cart)
-
-    return function (dispatch) {
-        axios.post('/api/cart', cart)
-            .then(function (res) {
-                console.log('res.data = ', res.data);
-                dispatch({ type: 'DELETE_CART_ITEM', payload: res.data });
-            })
-            .catch(function (err) {
-                dispatch({ type: 'DELETE_CART_ITEM_REJECTED', msg: 'error when deleting an item from the cart: ' + err })
-            })
-    }
-
-
-    // return {
-    //     type: 'DELETE_CART_ITEM',
-    //     payload: cart
-    // }
 }
 
 // UPDATE CART 
@@ -82,9 +62,21 @@ export function updateCart(_id, unit, cart) {
                 dispatch({ type: 'UPDATE_CART_REJECTED', msg: 'error when adding to the cart: ' + err })
             })
     }
+}
 
-    // return {
-    //     type: 'UPDATE_CART',
-    //     payload: cartUpdate
-    // }
+
+// DELETE CART ITEM
+export function deleteCartItem(cart) {
+    console.log("Creating the action: DELETE_CART, cart - after delete: ", cart)
+
+    return function (dispatch) {
+        axios.post('/api/cart', cart)
+            .then(function (res) {
+                console.log('res.data = ', res.data);
+                dispatch({ type: 'DELETE_CART_ITEM', payload: res.data });
+            })
+            .catch(function (err) {
+                dispatch({ type: 'DELETE_CART_ITEM_REJECTED', msg: 'error when deleting an item from the cart: ' + err })
+            })
+    }
 }

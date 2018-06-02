@@ -30,16 +30,21 @@ class BookItem extends React.Component {
             quantity: 1
         };
 
+        console.log('--- book will be add to cart = ', book);
+        console.log('--- cart.length = ', this.props.cart.length);
+
+
         // CHECK IF CART IS EMPTY
         if (this.props.cart.length > 0) {
             // CART IS NOT EMPTY
 
             let _id = this.props._id;
             let cartIndex = this.props.cart.findIndex(cartItem => cartItem._id === _id);
+            console.log('--- cartIndex (da ton tai sach thi > 0) = ', cartIndex);
 
             // IF RETURN TO -1 THERE ARE NO ITEMS WITH SAME ID
             if (cartIndex === -1) {
-                this.props.addToCart([book]);
+                this.props.addToCart([...this.props.cart, book]);
             } else {
                 this.props.updateCart(_id, 1, this.props.cart);
             }

@@ -22,7 +22,6 @@ export function getBooks() {
 // POST A BOOK
 export function postBooks(book) {
     // return {type: 'POST_BOOK', payload: book}
-
     return function (dispatch) {
         axios.post('/api/books', book)
             .then(function (res) {
@@ -32,6 +31,15 @@ export function postBooks(book) {
             .catch(function (err) {
                 dispatch({ type: 'POST_BOOK_REJECTED', payload: "there was an error while posting a new book" }); Î
             })
+    }
+}
+
+
+// UPDATE A BOOK
+export function updateBooks(book) {
+    return {
+        type: 'UPDATE_BOOK',
+        payload: book
     }
 }
 
@@ -52,13 +60,6 @@ export function deleteBooks(id) {
     // }
 }
 
-// UPDATE A BOOK
-export function updateBooks(book) {
-    return {
-        type: 'UPDATE_BOOK',
-        payload: book
-    }
-}
 
 // RESET BUTTON
 export function resetButton() {
