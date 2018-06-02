@@ -5,7 +5,7 @@ var logger = require('morgan');
 
 // PROXY
 var httpProxy = require('http-proxy');
-
+var requestHandler = require('./requestHandler');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
