@@ -74,6 +74,7 @@ Steps
         use symble ". do not use this symbl '
 
     13: npm i --save axios redux-thunk
+    => For what (?)
 
     14: call to api functions
 
@@ -92,3 +93,8 @@ Steps
     xx: Capture server exceptions..
 
         replace: throw(err) by console.log(err);
+
+----- SESCION 4
+
+    npm i --save ejs
+    
