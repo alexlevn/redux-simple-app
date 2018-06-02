@@ -21,7 +21,7 @@ class BookItem extends React.Component {
     }
 
     handleCart() {
-  
+        const book = {
             _id: this.props._id,
             description: this.props.description,
             title: this.props.title,
