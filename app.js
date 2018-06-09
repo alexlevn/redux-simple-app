@@ -13,8 +13,8 @@ var httpProxy = require('http-proxy');
 
 var requestHandler = require('./requestHandler');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+// var indexRouter = require('./routes/index');
+// var usersRouter = require('./routes/users');
 
 var app = express();
 app.use(logger('dev')); // need it during develpment to look all routes request

@@ -4,7 +4,8 @@
 
 // REACT
 import React from 'react';
-import { render } from 'react-dom';
+// import { render } from 'react-dom';
+import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 
 // REACT-ROUTER
@@ -17,52 +18,22 @@ import thunk from 'redux-thunk';
 
 // IMPORT COMBINED REDUCERS
 import reducers from './reducers/index';
-// reducer = module.export( default combineReducers{....})
-
-// IMPORT ACTIONS
-import { addToCart } from './actions/cartActions';
-import { getBooks, postBooks, deleteBooks, updateBooks } from './actions/booksActions';
-
-// STEP 1: create the store const middleware = applyMiddleware(logger()); // old
-// version
 
 // DÙNG MIDDLEWARE 1
 const middleware = applyMiddleware(thunk, logger);
-const store = createStore(reducers, middleware);
+// WE WILL PASS INITIAL STATE FROM SERVER STORE
 
-// MIDDLE WARE: Debug on Redux Console.
-// const store = createStore(reducers,
-//     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-// );
+const initialState = window.INITIAL_STATE;
+const store = createStore(reducers, initialState, middleware);
 
-import Cart from './components/pages/cart';
-import BooksList from './components/pages/booksList';
-import BooksForm from './components/pages/booksForm';
-import Main from './main';
 
-const About = () => (
-    <div>
-        About page.
-    </div>
-);
-const Contact = () => (
-    <div>
-        Contact page.
-    </div>
-);
-
+import routes from './routes'
 const Routes = (
     <Provider store={store}>
-        <Router history={browserHistory}>
-            <Route path="/" component={Main}>
-                <IndexRoute component={BooksList} />
-                <Route path="/admin" component={BooksForm} />
-                <Route path="/cart" component={Cart} />
-                <Route path="/about" component={About} />
-                <Route path="/contacts" component={Contact} />
-            </Route>
-        </Router>
+        {routes}
     </Provider>
 );
 
-render(Routes, document.getElementById('app'));
+// ReactDOM.render(Routes, document.getElementById('app'));
+ReactDOM.hydrate(Routes, document.getElementById('app'));
+// Replace the render() when render in server
